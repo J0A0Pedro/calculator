@@ -1,0 +1,220 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: consolas;
+}
+:root{
+    --bg:#333;
+    --bs25:rgba(0, 0, 0, 0.25);
+    --bs4:rgba(0, 0, 0, 0.4);
+    --bs5:rgba(0, 0, 0, 0.5);
+    --bs15:rgba(0, 0, 0, 0.15);
+    --bs75:rgba(0, 0, 0, 0.75);
+    --wd:#a7af7c;
+    --2f:#2f2f2f;
+    --3f:#3f3f3f;
+    --wht:#fff;
+    --2d:#2d2d2d;
+    --4d:#4d4d4d;
+    --bs01:rgba(0, 0, 0, 0.1);
+
+    --blb:#0004;
+    --bt:#0009;
+
+    --bg_red:rgb(255, 0, 0);
+    --bg_redM:#d20000;
+
+    --f5c:#ffffff5c;
+    --f4:#fff4;
+
+    --bg_blue:#2387da;
+    --bg_blueM:#1e8ae2;
+
+    --bgcalc:#333;
+}
+
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+    background-color: var(--bg);
+}
+
+.container{
+    position:relative;
+    min-width:300px;
+    min-height:400px;
+    background-color:var(--bgcalc);
+    padding: 40px 30px 30px;
+    box-shadow: 25px 25px 75px var(--bs25),
+    10px 10px 70px var(--bs25),
+    inset -5px -5px 15px var(--bs5),
+    inset 5px 5px 15px var(--bs5);
+}
+
+
+.calculator{
+    position:relative;
+    display:grid; 
+}
+.calculator .value{
+    position: relative;
+    grid-column: span 4;
+    height:100px;
+    left:10px;
+    width:calc(100% - 20px);
+    text-align: right;
+    padding:10px;
+    font-size:2em;
+    border:none;
+    outline: none;
+    background-color:var(--wd);
+    margin-bottom:10px;
+    border-radius:10px;
+    box-shadow: 0 0 0 2px var(--bs75);
+}
+
+.calculator span{
+    position:relative;
+    display:grid;
+    place-items: center;
+    width:80px;
+    height:80px;
+    margin:8px;
+    background: linear-gradient(180deg, var(--2f), var(--3f));
+    box-shadow: inset -8px 0 8px var(--bs15), 
+    inset 0 -8px 8px var(--bs25),
+    0 0 0 2px var(--bs75),
+    10px 20px 25px var(--bs4);
+    color:var(--wht);
+
+    user-select: none;
+    cursor:pointer; 
+    font-weight: 400;
+    border-radius: 10px;
+}
+.calculator span::before{
+    content: '';
+    position: absolute;
+    top:3px;
+    left:4px;
+    bottom:14px;
+    right:12px; 
+    background: linear-gradient(90deg, var(--2d), var(--4d));
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px var(--bs01),
+    10px 5px 10px var(--bs15);
+    border-left:1px solid var(--blb);
+    border-bottom:1px solid var(--blb);
+    border-top:1px solid var(--bt);
+}
+
+.calculator span:active{
+    filter: brightness(1.5);
+}
+
+
+.calculator span i {
+    position: relative;
+    font-style: normal;
+    font-size:1.5em;
+    text-transform: uppercase;
+}
+
+
+
+.calculator .clear{
+    grid-column: span 2;
+    width: 180px;
+    background: var(--bg_red);
+}
+
+.calculator .clear::before{
+    background: linear-gradient(90deg, var(--bg_redM), var(--f5c));
+    border-left: 1px solid var(--f4);
+    border-bottom:1px solid var(--f4);
+    border-top:1px solid var(--f4)
+}
+
+.calculator .plus{
+    grid-row: span 2;
+    height: 180px;
+}
+.calculator .equal{
+    background: var(--bg_blue);
+}
+
+.calculator .equal::before{
+    background: linear-gradient(90deg, var(--bg_blueM), var(--f5c));
+    border-left:1px solid var(--f4);
+    border-bottom:1px solid var(--f4);
+    border-top: 1px solid var(--f4)
+}
+
+
+
+
+
+/*button*/
+
+.pos{
+    width:150px;
+    height:150px;
+    margin-top:0px;
+}
+.mode{
+    width:0px;
+    height:0px;
+    position: absolute;
+    top:20px;
+    left:100px;
+
+}
+
+
+input[type=checkbox]{
+    height:0;
+    width:0;
+    visibility: hidden;
+}
+
+label{
+    cursor: pointer;
+    text-indent: -9999px;
+    width:52px;
+    height:27px;
+    background:grey;
+    float:right;
+    border-radius: 100px;
+    position: relative;
+
+}
+label::after{
+    content: "";
+    position:absolute;
+    top:3px;
+    left:3px;
+    width:20px;
+    height:20px;
+    background-color: white;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background-color: rgb(194, 194, 194);
+}
+
+input:checked + label::after{
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active::after{
+    width:45px;
+}
+
+
+
